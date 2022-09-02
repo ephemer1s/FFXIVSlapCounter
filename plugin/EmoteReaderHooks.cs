@@ -9,6 +9,8 @@ namespace PatMe
     public class EmoteReaderHooks : IDisposable
     {
         public static ushort petEmoteId = 105;  // TODO: read from lumina?
+        public static ushort doteEmoteId = 146;  
+        public static ushort slapEmoteId = 111;  
 
         public Action<GameObject, int> OnEmote;
 
