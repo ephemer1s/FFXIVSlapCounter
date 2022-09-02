@@ -45,7 +45,7 @@ namespace PatMe
             // two different emote ids?
             Service.doteCounter = new EmoteCounter()
             {
-                counterEmoteId = 146,
+                counterEmoteId = EmoteReaderHooks.doteEmoteId,
                 triggerEmoteIds = new int[] { 146, 147 },
                 counterDesc = "dote",
                 counterDescPlural = "dotes",
@@ -54,6 +54,16 @@ namespace PatMe
             Service.doteCounter.OnChanged += (num) => OnEmoteReward(Service.doteCounter, num);
             Service.doteCounter.isActive = Service.pluginConfig.canTrackDotes;
             emoteCounters.Add(Service.doteCounter);
+
+            Service.slapCounter = new EmoteCounter()
+            {
+                counterEmoteId = EmoteReaderHooks.slapEmoteId,
+                counterDesc = "slap",
+                counterDescPlural = "slaps",
+                uiDesc = "Slaps",
+            };
+            Service.patCounter.OnChanged += (num) => OnEmoteReward(Service.slapCounter, num);
+            emoteCounters.Add(Service.slapCounter);
 
             pluginUI = new PluginUI();
             pluginUI.overlayImage = LoadEmbeddedImage("fan-kit-lala.png");
